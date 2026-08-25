@@ -1,0 +1,9 @@
+.routeTransitionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-layer-scene-overlay);
+  background-color: var(--color-bg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

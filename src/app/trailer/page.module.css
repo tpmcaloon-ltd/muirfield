@@ -1,0 +1,17 @@
+.main {
+  position: relative;
+  min-height: var(--app-height, 100vh);
+  overflow: hidden;
+}
+
+:global(html.viewport-lock-page),
+:global(html.viewport-lock-page body) {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+:global(html.viewport-lock-page .page-wrapper) {
+  overflow: hidden;
+  touch-action: manipulation;
+}
