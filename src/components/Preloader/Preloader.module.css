@@ -1,0 +1,116 @@
+.preloader {
+  position: fixed;
+  top: var(--vv-offset-top, 0);
+  left: var(--vv-offset-left, 0);
+  width: var(--vv-width, 100vw);
+  height: var(--vv-height, 100vh);
+  z-index: var(--z-layer-preloader);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+}
+
+.preloader.isExiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3xl);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 72px);
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-display-title);
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.primaryButton {
+  width: fit-content;
+}
+
+.cta {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ctaVisible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.muteEnter {
+  position: absolute;
+  left: 50%;
+  bottom: var(--spacing-2xl);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-highlight);
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.muteLabel {
+  position: relative;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: capitalize;
+}
+
+.muteEnter.cta {
+  transform: translate3d(-50%, 12px, 0);
+  transition-delay: 0.25s;
+}
+
+.muteEnter.ctaVisible {
+  transform: translate3d(-50%, 0, 0);
+}
+
+.muteEnter:focus,
+.muteEnter:focus-visible {
+  outline: none;
+}
+
+@media (max-width: 1000px) {
+  .preloader {
+    padding: var(--spacing-xl);
+  }
+
+  .muteEnter {
+    bottom: var(--spacing-3xl);
+  }
+}

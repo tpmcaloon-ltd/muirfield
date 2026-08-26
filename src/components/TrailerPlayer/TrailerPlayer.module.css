@@ -1,0 +1,216 @@
+.overlay {
+  position: fixed;
+  top: var(--vv-offset-top, 0);
+  left: var(--vv-offset-left, 0);
+  width: var(--vv-width, 100vw);
+  height: var(--vv-height, 100vh);
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  z-index: var(--z-layer-content);
+}
+
+.debugPanel {
+  position: absolute;
+  top: calc(var(--spacing-2xl) + 28px);
+  left: 50%;
+  z-index: var(--z-layer-hud);
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.debugBadge {
+  margin: 0;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-hairline);
+  background: rgba(24, 21, 3, 0.85);
+  color: var(--color-text-highlight);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-small);
+  line-height: var(--line-height-ui-small);
+  letter-spacing: var(--letter-spacing-ui-small);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.videoContainer {
+  position: absolute;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  transition:
+    top 0.3s ease,
+    left 0.3s ease,
+    width 0.3s ease,
+    height 0.3s ease;
+}
+
+.videoContainerDebug {
+  transition: none;
+}
+
+.videoSource {
+  display: none;
+}
+
+.videoCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.videoTimeline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: env(safe-area-inset-bottom, 0);
+  width: 100%;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 0px));
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  z-index: var(--z-layer-local);
+}
+
+.videoTimestamps {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.videoTimestamps p {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-ui-small);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.videoFrames {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  border-top: 1px dashed var(--color-accent);
+  border-bottom: 1px dashed var(--color-accent);
+  padding: var(--spacing-sm) 0;
+}
+
+.frame {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.frame:focus,
+.frame:focus-visible {
+  outline: none;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 21, 3, 0.5);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.frame:hover::after,
+.frameActive::after {
+  opacity: 0;
+}
+
+.videoMarker {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  left: 0;
+  width: 2px;
+  height: 150px;
+  background: var(--color-accent);
+  z-index: var(--z-layer-local);
+}
+
+.videoMarker::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: var(--color-accent);
+}
+
+.videoTimelineMobile {
+  height: 100px;
+}
+
+.videoFramesMobile {
+  gap: var(--spacing-xs);
+  border-bottom: none;
+}
+
+.videoMarkerMobile {
+  height: 100px;
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-transform: uppercase;
+  transition:
+    transform 1000ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.35s ease;
+  pointer-events: none;
+  z-index: var(--z-layer-local);
+  opacity: 1;
+}
+
+.cursorHidden {
+  opacity: 0;
+}
+
+.cursor p {
+  margin: 0;
+  padding: 3px var(--spacing-xs) 2px;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-ui-small);
+  line-height: 1;
+  letter-spacing: 0;
+  border-radius: var(--radius-hairline);
+}
+
+@media (max-width: 1000px) {
+  .cursor {
+    display: none;
+  }
+
+  .videoTimeline {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + var(--spacing-2xl));
+    padding-bottom: var(--spacing-md);
+  }
+}

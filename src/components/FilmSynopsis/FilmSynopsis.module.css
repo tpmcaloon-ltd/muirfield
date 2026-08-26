@@ -1,0 +1,112 @@
+.synopsis {
+  width: 100%;
+  background-color: var(--color-bg);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.inner {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  max-width: 450px;
+  font-family: var(--font-family-primary);
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+  margin: var(--spacing-4xl) 0 0 auto;
+  padding: var(--spacing-3xl) 0;
+  width: fit-content;
+}
+
+.creditItem {
+  margin: 0;
+}
+
+.label {
+  margin: 0 0 var(--spacing-sm);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-label);
+  line-height: var(--line-height-ui-label);
+  letter-spacing: var(--letter-spacing-ui-label-medium);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.value {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+@media (max-width: 1000px) {
+  .synopsis {
+    padding: var(--spacing-2xl) var(--spacing-2xl)
+      calc(var(--spacing-5xl) + var(--spacing-2xl));
+  }
+
+  .title {
+    max-width: none;
+    font-size: clamp(24px, 7vw, 40px);
+    line-height: 1.2;
+  }
+
+  .credits {
+    margin: var(--spacing-3xl) 0 0;
+    padding: var(--spacing-xl) 0 0;
+    width: 100%;
+    gap: var(--spacing-2xl);
+  }
+
+  .value {
+    font-size: clamp(22px, 6.5vw, 34px);
+  }
+}
+
+@media (max-width: 600px) {
+  .synopsis {
+    padding-inline: var(--spacing-2xl);
+  }
+
+  .credits {
+    gap: var(--spacing-xl);
+  }
+
+  .label {
+    font-size: var(--font-size-ui-small);
+    line-height: var(--line-height-ui-small);
+  }
+}
+
+@media (min-width: 768px) {
+  .synopsis {
+    padding-top: var(--spacing-4xl);
+    padding-bottom: var(--spacing-5xl);
+  }
+
+  .credits {
+    margin-top: var(--spacing-4xl);
+  }
+}
+
+@media (min-width: 1536px) {
+  .synopsis {
+    padding-top: var(--spacing-5xl);
+    padding-bottom: var(--spacing-5xl);
+  }
+}

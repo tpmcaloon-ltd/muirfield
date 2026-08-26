@@ -1,0 +1,6 @@
+.main {
+  position: relative;
+  width: 100%;
+  min-height: var(--app-height, 100vh);
+  background-color: var(--color-bg);
+}

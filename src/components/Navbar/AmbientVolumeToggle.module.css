@@ -1,0 +1,63 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  color: var(--color-text-highlight);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: scale(1);
+  transition: transform 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.button:active {
+  transform: scale(0.9);
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+}
+
+.button:focus,
+.button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.inner {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ring {
+  stroke: currentColor;
+  stroke-width: 1.25;
+  opacity: 0.5;
+  transition: opacity 0.22s ease;
+}
+
+.button[aria-pressed="true"] .ring {
+  opacity: 1;
+}
+
+.wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

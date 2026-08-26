@@ -1,0 +1,83 @@
+.controls {
+  position: fixed;
+  left: 50%;
+  bottom: calc(
+    var(--spacing-4xl) + var(--spacing-lg) + var(--line-height-ui-small)
+  );
+  z-index: var(--z-layer-chrome);
+  display: grid;
+  grid-template-columns: repeat(3, 36px);
+  grid-template-rows: repeat(2, 36px);
+  gap: var(--spacing-xs);
+  translate: -50% 0;
+  pointer-events: none;
+  transition:
+    opacity 0.45s ease,
+    translate 0.45s ease;
+}
+
+.controlsHidden {
+  opacity: 0;
+  translate: -50% 6px;
+  pointer-events: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-soft);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn:active {
+  opacity: 0.82;
+}
+
+.btnUp {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.btnLeft {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.btnDown {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.btnRight {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+@media (min-width: 1001px) {
+  .controls {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .controlsHidden .btn {
+    pointer-events: none;
+  }
+}

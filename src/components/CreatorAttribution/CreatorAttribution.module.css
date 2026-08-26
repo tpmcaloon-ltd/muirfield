@@ -1,0 +1,39 @@
+.attribution {
+  position: fixed;
+  top: calc(
+    var(--vv-offset-top, 0px) + var(--vv-height, 100vh) - var(--spacing-xl) -
+      env(safe-area-inset-bottom, 0px)
+  );
+  right: var(--spacing-xl);
+  z-index: var(--z-layer-chrome);
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  pointer-events: none;
+  user-select: none;
+  transform: translateY(-100%);
+}
+
+.prefix {
+  color: var(--color-text-highlight);
+  font-family: var(--font-family-primary);
+}
+
+.brand {
+  position: relative;
+  color: var(--color-text-highlight);
+  font-family: var(--font-family-primary);
+  text-decoration: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .attribution {
+    left: 50%;
+    right: auto;
+    translate: -50% -100%;
+    text-align: center;
+  }
+}

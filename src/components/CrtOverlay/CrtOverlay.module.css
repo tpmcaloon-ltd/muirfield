@@ -1,0 +1,9 @@
+.overlay {
+  position: fixed;
+  top: var(--vv-offset-top, 0);
+  left: var(--vv-offset-left, 0);
+  width: var(--vv-width, 100vw);
+  height: var(--vv-height, 100vh);
+  pointer-events: none;
+  z-index: var(--z-layer-crt);
+}
