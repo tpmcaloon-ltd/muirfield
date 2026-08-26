@@ -1,0 +1,8 @@
+:global(.page) {
+  isolation: isolate;
+}
+
+:global(.page-wrapper) {
+  position: relative;
+  z-index: var(--z-layer-content);
+}

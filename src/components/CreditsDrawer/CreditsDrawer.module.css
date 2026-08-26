@@ -1,0 +1,201 @@
+.toggler {
+  position: fixed;
+  top: calc(
+    var(--vv-offset-top, 0px) + var(--vv-height, 100vh) - var(--spacing-xl) -
+      env(safe-area-inset-bottom, 0px)
+  );
+  right: var(--spacing-xl);
+  z-index: var(--z-layer-chrome);
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: capitalize;
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateY(-100%);
+  transition:
+    color 0.35s ease,
+    top 0.2s linear;
+}
+
+.togglerLabel {
+  position: relative;
+}
+
+.toggler:focus,
+.toggler:focus-visible,
+.toggler:active {
+  outline: none;
+  color: var(--color-accent);
+}
+
+.backdrop {
+  position: fixed;
+  top: var(--vv-offset-top, 0);
+  left: var(--vv-offset-left, 0);
+  width: var(--vv-width, 100vw);
+  height: var(--vv-height, 100vh);
+  z-index: var(--z-layer-scene-overlay);
+  background: rgba(24, 21, 3, 0.25);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.backdropOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.4s ease,
+    visibility 0s linear;
+}
+
+.drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--vv-height, 100vh);
+  z-index: var(--z-layer-scene-overlay);
+  background-color: var(--color-bg);
+  color: var(--color-text-highlight);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  visibility: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.77, 0, 0.175, 1),
+    visibility 0.4s;
+  pointer-events: none;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.drawerOpen {
+  transform: translateY(-100%);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--spacing-2xl);
+  right: var(--spacing-2xl);
+  z-index: var(--z-layer-local);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-highlight);
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    color 0.35s ease;
+}
+
+.closeBtnVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.25s ease;
+}
+
+.closeBtn:focus,
+.closeBtn:focus-visible {
+  outline: none;
+}
+
+.closeIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-2xl);
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3xl);
+  padding-bottom: var(--spacing-md);
+}
+
+.logo {
+  width: auto;
+  height: 36px;
+  object-fit: contain;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.link {
+  color: var(--color-text-highlight);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-small);
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-ui-small);
+  text-transform: capitalize;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.dot {
+  color: var(--color-text-highlight);
+  font-size: var(--font-size-ui-small);
+  line-height: 1;
+}
+
+.copyright {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-small);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-ui-small);
+  text-transform: capitalize;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    padding-bottom: calc(var(--spacing-3xl) + var(--spacing-2xl));
+  }
+}
+
+@media (max-width: 600px) {
+  .logos {
+    gap: var(--spacing-xl);
+  }
+
+  .logo {
+    height: 32px;
+  }
+}

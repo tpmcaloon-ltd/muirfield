@@ -1,0 +1,26 @@
+.root {
+  display: contents;
+}
+
+.word {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.char {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  overflow: visible;
+}
+
+.line {
+  display: block;
+  position: relative;
+  will-change: transform, opacity;
+}

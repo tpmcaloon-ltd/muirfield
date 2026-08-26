@@ -1,0 +1,170 @@
+.container {
+  position: fixed;
+  top: var(--vv-offset-top, 0);
+  left: var(--vv-offset-left, 0);
+  width: var(--vv-width, 100vw);
+  height: var(--vv-height, 100vh);
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.containerPlaying {
+  touch-action: none;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.debugPanel {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  z-index: var(--z-layer-hud);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: min(22rem, calc(100vw - 2 * var(--spacing-sm)));
+}
+
+.debugBadge {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-soft);
+  background: rgb(255 247 153 / 14%);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-label);
+  letter-spacing: var(--letter-spacing-ui-small);
+  pointer-events: none;
+}
+
+.cameraHud {
+  margin: 0;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-soft);
+  background: rgb(0 0 0 / 55%);
+  border: 1px solid rgb(255 247 153 / 35%);
+  color: var(--color-accent);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-label);
+  letter-spacing: var(--letter-spacing-ui-small);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  pointer-events: none;
+}
+
+.copyCameraButton {
+  align-self: flex-start;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-soft);
+  border: 1px solid var(--color-accent);
+  background: rgb(255 247 153 / 18%);
+  color: var(--color-accent);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-label);
+  letter-spacing: var(--letter-spacing-ui-small);
+  cursor: pointer;
+}
+
+.enterOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-layer-scene-overlay);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.landingCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+  pointer-events: none;
+}
+
+.landingCopyHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.landingTitle {
+  font-size: clamp(3rem, 12vw, var(--font-size-display-title));
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-display-title);
+  color: var(--color-accent);
+}
+
+.landingTagline {
+  margin: 0 0 var(--spacing-lg);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: lowercase;
+  color: var(--color-accent);
+}
+
+.enterButton {
+  pointer-events: none;
+}
+
+.landingCopy:not(.landingCopyHidden) .enterButton {
+  pointer-events: auto;
+}
+
+.landingCopyHidden .enterButton {
+  pointer-events: none;
+}
+
+.backButton {
+  position: fixed;
+  left: 50%;
+  bottom: var(--spacing-xl);
+  z-index: var(--z-layer-chrome);
+  margin: 0;
+  padding: 0 0 var(--spacing-xs);
+  border: 0;
+  background: transparent;
+  color: var(--color-text-highlight);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-ui-small);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-ui-small);
+  text-transform: capitalize;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  translate: -50% 0;
+  transition:
+    opacity 0.45s ease,
+    translate 0.45s ease;
+}
+
+.backButtonLabel {
+  position: relative;
+}
+
+.backButton:focus,
+.backButton:focus-visible {
+  outline: none;
+}
+
+.backButtonHidden {
+  opacity: 0;
+  translate: -50% 6px;
+  pointer-events: none;
+}
+
+@media (max-width: 1000px) {
+  .backButton {
+    bottom: var(--spacing-4xl);
+  }
+}

@@ -1,0 +1,26 @@
+.button {
+  margin: 0;
+  padding: 10px var(--spacing-sm) 9px;
+  border: 0;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-ui-small);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:focus,
+.button:focus-visible {
+  outline: none;
+}
+
+.fadePending {
+  opacity: 0;
+}
